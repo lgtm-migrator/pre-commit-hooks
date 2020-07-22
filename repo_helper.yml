@@ -1,0 +1,35 @@
+modname: pre_commit_hooks
+copyright_years: "2020"
+author: "Dominic Davis-Foster"
+email: "dominic@davis-foster.co.uk"
+version: "0.0.0"
+username: "domdfcoding"
+license: 'MIT'
+short_desc: 'Some useful hooks for pre-commit.'
+
+enable_conda: False
+on_pypi: False
+
+console_scripts:
+  - "requirements-txt-sorter = pre_commit_hooks.requirements_txt_sorter:main"
+
+python_deploy_version: 3.6
+
+# Versions to run tests for
+python_versions:
+  - '3.6'
+  - '3.7'
+  - '3.8'
+  - '3.9-dev'
+
+# travis secure password for PyPI
+#travis_pypi_secure:
+
+classifiers:
+  - 'Development Status :: 4 - Beta'
+#  - "Development Status :: 5 - Production/Stable"
+#  - "Development Status :: 6 - Mature"
+#  - "Development Status :: 7 - Inactive"
+  - 'Intended Audience :: Developers'
+  - 'Operating System :: OS Independent'
+  - 'Topic :: Utilities'
