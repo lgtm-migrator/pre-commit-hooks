@@ -1,5 +1,5 @@
 #################
-pre_commit_hooks
+pre-commit-hooks
 #################
 
 .. start short_desc
@@ -7,6 +7,8 @@ pre_commit_hooks
 **Some useful hooks for pre-commit.**
 
 .. end short_desc
+
+Well, there's only one at the minute.
 
 See also: https://github.com/pre-commit/pre-commit
 
