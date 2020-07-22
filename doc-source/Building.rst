@@ -2,7 +2,7 @@
 Building from source
 *********************
 
-To build the ``pre_commit_hooks`` package from source using ``setuptools``, run the following command:
+To build the ``pre-commit-hooks`` package from source using ``setuptools``, run the following command:
 
 .. code-block:: bash
 

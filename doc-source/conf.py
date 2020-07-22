@@ -18,15 +18,15 @@ from __pkginfo__ import __version__
 # User-configurable lines
 # End of user-configurable lines
 
-github_url = "https://github.com/domdfcoding/pre_commit_hooks"
+github_url = "https://github.com/domdfcoding/pre-commit-hooks"
 
-rst_prolog = f""".. |pkgname| replace:: pre_commit_hooks
-.. |pkgname2| replace:: ``pre_commit_hooks``
+rst_prolog = f""".. |pkgname| replace:: pre-commit-hooks
+.. |pkgname2| replace:: ``pre-commit-hooks``
 .. |browse_github| replace:: `Browse the GitHub Repository <{github_url}>`__
 """
 
 author = "Dominic Davis-Foster"
-project = "pre_commit_hooks"
+project = "pre-commit-hooks"
 slug = re.sub(r'\W+', '-', project.lower())
 release = version = __version__
 copyright = "2020 Dominic Davis-Foster"  # pylint: disable=redefined-builtin
@@ -89,7 +89,7 @@ html_show_sourcelink = True  # True will show link to source
 html_context = {
 		'display_github': True,
 		'github_user': 'domdfcoding',
-		'github_repo': 'pre_commit_hooks',
+		'github_repo': 'pre-commit-hooks',
 		'github_version': 'master',
 		'conf_py_path': '/doc-source/',
 		}

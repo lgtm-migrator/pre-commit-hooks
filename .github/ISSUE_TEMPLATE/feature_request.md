@@ -22,7 +22,7 @@ INSUFFICIENT INFO WILL GET THE ISSUE CLOSED. IT WILL ONLY BE REOPENED AFTER SUFF
 
   * Operating System:
   * Python:
-  * pre_commit_hooks:
+  * pre-commit-hooks:
 
 
 ## Other Additional Information:

@@ -1,4 +1,4 @@
-modname: pre_commit_hooks
+modname: pre-commit-hooks
 copyright_years: "2020"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"

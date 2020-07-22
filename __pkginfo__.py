@@ -40,15 +40,15 @@ __copyright__ = """
 """
 
 __version__ = "0.0.0"
-modname = "pre_commit_hooks"
-pypi_name = "pre_commit_hooks"
+modname = "pre-commit-hooks"
+pypi_name = "pre-commit-hooks"
 import_name = "pre_commit_hooks"
 __license__ = "MIT License"
 short_desc = "Some useful hooks for pre-commit."
 __author__ = author = "Dominic Davis-Foster"
 author_email = "dominic@davis-foster.co.uk"
 github_username = "domdfcoding"
-web = github_url = "https://github.com/domdfcoding/pre_commit_hooks"
+web = github_url = "https://github.com/domdfcoding/pre-commit-hooks"
 repo_root = pathlib.Path(__file__).parent
 install_requires = (repo_root / "requirements.txt").read_text(encoding="utf-8").split('\n')
 extras_require = {'all': []}
@@ -56,7 +56,7 @@ extras_require = {'all': []}
 
 
 project_urls = {
-		"Documentation": "https://pre_commit_hooks.readthedocs.io",
+		"Documentation": "https://pre-commit-hooks.readthedocs.io",
 		"Issue Tracker": f"{github_url}/issues",
 		"Source Code": github_url,
 		}
