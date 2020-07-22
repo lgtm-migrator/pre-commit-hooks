@@ -9,6 +9,7 @@ short_desc: 'Some useful hooks for pre-commit.'
 
 enable_conda: False
 on_pypi: False
+enable_docs: False
 
 console_scripts:
   - "requirements-txt-sorter = pre_commit_hooks.requirements_txt_sorter:main"

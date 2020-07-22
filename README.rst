@@ -16,8 +16,6 @@ See also: https://github.com/pre-commit/pre-commit
 	:stub-columns: 1
 	:widths: 10 90
 
-	* - Docs
-	  - |docs| |docs_check|
 	* - Tests
 	  - |travis| |actions_windows| |actions_macos| |coveralls| |codefactor|
 
@@ -26,13 +24,7 @@ See also: https://github.com/pre-commit/pre-commit
 	* - Other
 	  - |license| |language| |requires| |pre_commit|
 
-.. |docs| image:: https://img.shields.io/readthedocs/pre-commit-hooks/latest?logo=read-the-docs
-	:target: https://pre-commit-hooks.readthedocs.io/en/latest/?badge=latest
-	:alt: Documentation Status
 
-.. |docs_check| image:: https://github.com/domdfcoding/pre-commit-hooks/workflows/Docs%20Check/badge.svg
-	:target: https://github.com/domdfcoding/pre-commit-hooks/actions?query=workflow%3A%22Docs+Check%22
-	:alt: Docs Check Status
 
 .. |travis| image:: https://img.shields.io/travis/com/domdfcoding/pre-commit-hooks/master?logo=travis
 	:target: https://travis-ci.com/domdfcoding/pre-commit-hooks
