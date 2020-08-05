@@ -1,6 +1,6 @@
+# stdlib
 import subprocess
-from typing import Any
-from typing import Optional
+from typing import Any, Optional
 
 
 class CalledProcessError(RuntimeError):

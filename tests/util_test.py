@@ -1,7 +1,8 @@
+# 3rd party
 import pytest
 
-from pre_commit_hooks.util import CalledProcessError
-from pre_commit_hooks.util import cmd_output
+# this package
+from pre_commit_hooks.util import CalledProcessError, cmd_output
 
 
 def test_raises_on_error():

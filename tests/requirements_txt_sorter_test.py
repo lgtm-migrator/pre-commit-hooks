@@ -1,9 +1,8 @@
+# 3rd party
 import pytest
 
-from pre_commit_hooks.requirements_txt_sorter import FAIL
-from pre_commit_hooks.requirements_txt_sorter import main
-from pre_commit_hooks.requirements_txt_sorter import PASS
-from pre_commit_hooks.requirements_txt_sorter import Requirement
+# this package
+from pre_commit_hooks.requirements_txt_sorter import FAIL, PASS, Requirement, main
 
 
 @pytest.mark.parametrize(

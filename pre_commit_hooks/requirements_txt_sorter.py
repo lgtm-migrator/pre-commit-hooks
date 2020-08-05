@@ -1,9 +1,10 @@
+# stdlib
 import argparse
-from typing import List
-from typing import Optional
-from typing import Sequence
+from typing import List, Optional, Sequence
 
-from packaging.requirements import InvalidRequirement, Requirement as _Requirement
+# 3rd party
+from packaging.requirements import InvalidRequirement
+from packaging.requirements import Requirement as _Requirement
 
 PASS = 0
 FAIL = 1
