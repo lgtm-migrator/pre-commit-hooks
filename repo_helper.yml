@@ -13,6 +13,7 @@ enable_docs: False
 
 console_scripts:
   - "requirements-txt-sorter = pre_commit_hooks.requirements_txt_sorter:main"
+  - "check-docstring-first = pre_commit_hooks.check_docstring_first:main"
 
 python_deploy_version: 3.6
 
