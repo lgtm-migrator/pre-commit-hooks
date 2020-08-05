@@ -75,7 +75,7 @@ See also: https://github.com/pre-commit/pre-commit
 .. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/pre-commit-hooks
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/pre-commit-hooks/v0.0.1
+.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/pre-commit-hooks/v0.0.2
 	:target: https://github.com/domdfcoding/pre-commit-hooks/pulse
 	:alt: GitHub commits since tagged version
 
@@ -100,7 +100,7 @@ Add this to your `.pre-commit-config.yaml`
 .. code-block:: yaml
 
 	-   repo: https://github.com/domdfcoding/pre-commit-hooks
-	    rev: v0.0.1  # Use the ref you want to point at
+	    rev: v0.0.2  # Use the ref you want to point at
 	    hooks:
 	    -   id: requirements-txt-sorter
 	    # -   id: ...
@@ -109,4 +109,4 @@ Hooks available
 -----------------
 
 ``requirements-txt-sorter``
-Sorts `PEP508 <https://www.python.org/dev/peps/pep-0508/>`_ entries in requirements.txt and removes invalid entries, including ``pkg-resources==0.0.1``.
+Sorts `PEP508 <https://www.python.org/dev/peps/pep-0508/>`_ entries in requirements.txt and removes invalid entries, including ``pkg-resources==0.0.2``.
