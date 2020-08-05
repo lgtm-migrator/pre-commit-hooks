@@ -44,9 +44,9 @@ modname = "pre-commit-hooks"
 pypi_name = "pre-commit-hooks"
 import_name = "pre_commit_hooks"
 __license__ = "MIT License"
-short_desc = "Some useful hooks for pre-commit."
-__author__ = author = "Dominic Davis-Foster"
-author_email = "dominic@davis-foster.co.uk"
+short_desc = 'Some useful hooks for pre-commit.'
+__author__ = author = 'Dominic Davis-Foster'
+author_email = 'dominic@davis-foster.co.uk'
 github_username = "domdfcoding"
 web = github_url = "https://github.com/domdfcoding/pre-commit-hooks"
 repo_root = pathlib.Path(__file__).parent
