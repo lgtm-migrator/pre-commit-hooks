@@ -20,7 +20,7 @@ See also: https://github.com/pre-commit/pre-commit
 
 	* - Tests
 	  - |travis| |actions_windows| |actions_macos| |coveralls| |codefactor|
-	
+
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
 	* - Other
