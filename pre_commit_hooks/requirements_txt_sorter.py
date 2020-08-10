@@ -18,6 +18,8 @@ class Requirement(_Requirement):
 					self.name == other.name and self.url == other.url and self.extras == other.extras
 					and self.specifier == other.specifier and self.marker == other.marker
 					)
+		else:
+			return NotImplemented
 
 
 def fix_requirements(filename: str) -> int:
