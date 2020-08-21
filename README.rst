@@ -8,7 +8,7 @@ pre-commit-hooks
 
 .. end short_desc
 
-Well, there's only one at the minute.
+Now with 2× as many hooks!
 
 See also: https://github.com/pre-commit/pre-commit
 
@@ -109,4 +109,7 @@ Hooks available
 -----------------
 
 ``requirements-txt-sorter``
-Sorts `PEP508 <https://www.python.org/dev/peps/pep-0508/>`_ entries in requirements.txt and removes invalid entries, including ``pkg-resources==0.0.3``.
+Sorts `PEP 508 <https://www.python.org/dev/peps/pep-0508/>`_ entries in requirements.txt and removes invalid entries, including ``pkg-resources==0.0.3``.
+
+``check-docstring-first``
+Checks that the docstring occurs before any module code, but allows additional "docstrings", such as for documenting variables with Sphinx.
