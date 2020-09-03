@@ -13,6 +13,11 @@ import tokenize
 from tokenize import tokenize as tokenize_tokenize
 from typing import Optional, Sequence
 
+# this package
+from pre_commit_hooks.util import FAIL, PASS
+
+__all__ = ["check_docstring_first", "main"]
+
 NON_CODE_TOKENS = frozenset((
 		tokenize.COMMENT,
 		tokenize.ENDMARKER,
@@ -46,13 +51,13 @@ def check_docstring_first(src: bytes, filename: str = '<unknown>') -> int:
 						f'{filename}:{sline} Module docstring appears after code '
 						f'(code seen on line {found_code_line}).',
 						)
-				return 1
+				return FAIL
 			else:
 				found_docstring_line = sline
 		elif tok_type not in NON_CODE_TOKENS and found_code_line is None:
 			found_code_line = sline
 
-	return 0
+	return PASS
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -60,7 +65,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 	parser.add_argument('filenames', nargs='*')
 	args = parser.parse_args(argv)
 
-	retv = 0
+	retv = PASS
 
 	for filename in args.filenames:
 		with open(filename, 'rb') as f:

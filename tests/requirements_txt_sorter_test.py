@@ -2,7 +2,8 @@
 import pytest
 
 # this package
-from pre_commit_hooks.requirements_txt_sorter import FAIL, PASS, Requirement, main
+from pre_commit_hooks.requirements_txt_sorter import main
+from pre_commit_hooks.util import FAIL, PASS
 
 
 @pytest.mark.parametrize(
@@ -15,8 +16,7 @@ from pre_commit_hooks.requirements_txt_sorter import FAIL, PASS, Requirement, ma
 				('foo\nbar\n', FAIL, 'bar\nfoo\n'),
 				('bar\nfoo\n', PASS, 'bar\nfoo\n'),
 				('a\nc\nb\n', FAIL, 'a\nb\nc\n'),
-				# ('a\nc\n', FAIL, 'a\nb\nc\n'),
-				('a\nb\nc', FAIL, 'a\nb\nc\n'),
+				('a\nb\nc', PASS, 'a\nb\nc'),
 				(
 						'#comment1\nfoo\n#comment2\nbar\n',
 						FAIL,
@@ -69,9 +69,3 @@ def test_integration(input_s, expected_retval, output, tmpdir):
 
 	assert path.read_text(encoding="UTF-8") == output
 	assert output_retval == expected_retval
-
-
-def test_requirement_object():
-	assert Requirement("foo") != Requirement("bar")
-	assert Requirement("foo") == Requirement("foo")
-	assert Requirement("foo>=1.2.3") == Requirement("foo >= 1.2.3")

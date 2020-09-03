@@ -1,15 +1,8 @@
-# 3rd party
-import pytest
-
 # this package
-from pre_commit_hooks.util import CalledProcessError, cmd_output
+from pre_commit_hooks.util import Requirement
 
 
-def test_raises_on_error():
-	with pytest.raises(CalledProcessError):
-		cmd_output('sh', '-c', 'exit 1')
-
-
-def test_output():
-	ret = cmd_output('sh', '-c', 'echo hi')
-	assert ret == 'hi\n'
+def test_requirement_object():
+	assert Requirement("foo") != Requirement("bar")
+	assert Requirement("foo") == Requirement("foo")
+	assert Requirement("foo>=1.2.3") == Requirement("foo >= 1.2.3")
