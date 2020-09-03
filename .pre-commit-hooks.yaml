@@ -3,7 +3,13 @@
     description: Sorts entries in requirements.txt
     entry: requirements-txt-sorter
     language: python
-    files: requirements.*\.txt$
+    files: .*requirements.*\.txt$
+-   id: bind-requirements
+    name: Bind requirements.txt
+    description: Bind versions in requirements.txt
+    entry: bind-requirements
+    language: python
+    files: .*requirements.*\.txt$
 -   id: check-docstring-first
     name: Check docstring is first
     description: Checks a common error of defining a docstring after code.
