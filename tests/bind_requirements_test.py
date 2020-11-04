@@ -55,7 +55,7 @@ from pre_commit_hooks.util import FAIL, PASS, Requirement
 						'f<=2\n'
 						'g<2\n',
 						),
-				('ocflib\nDjango\nPyMySQL\n', FAIL, 'Django>=3.1.1\nocflib>=2020.8.20.0.7\nPyMySQL>=0.10.0\n'),
+				('ocflib\nDjango\nPyMySQL\n', FAIL, 'Django>=3.1.3\nocflib>=2020.10.9.8.6\nPyMySQL>=0.10.0\n'),
 				('bar\npkg-resources==0.0.0\nfoo\n', FAIL, 'bar>=0.2.1\nfoo>=.1\npkg-resources==0.0.0\n'),
 				('foo\npkg-resources==0.0.0\nbar\n', FAIL, 'bar>=0.2.1\nfoo>=.1\npkg-resources==0.0.0\n'),
 				('foo???1.2.3\nbar\n', FAIL, 'foo???1.2.3\nbar>=0.2.1\n'),
