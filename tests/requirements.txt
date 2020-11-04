@@ -1,4 +1,4 @@
-covdefaults
+covdefaults>=1.2.0
 coverage>=5.1
 coverage-pyver-pragma>=0.0.6
 iniconfig!=1.1.0,>=1.0.1
