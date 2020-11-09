@@ -16,24 +16,17 @@ console_scripts:
   - "bind-requirements = pre_commit_hooks.bind_requirements:main"
   - "check-docstring-first = pre_commit_hooks.check_docstring_first:main"
 
-python_deploy_version: 3.6
-
 # Versions to run tests for
 python_versions:
   - '3.6'
   - '3.7'
   - '3.8'
   - '3.9'
+  - 'pypy3'
   - '3.10-dev'
-
-# travis secure password for PyPI
-#travis_pypi_secure:
 
 classifiers:
   - 'Development Status :: 4 - Beta'
-#  - "Development Status :: 5 - Production/Stable"
-#  - "Development Status :: 6 - Mature"
-#  - "Development Status :: 7 - Inactive"
   - 'Intended Audience :: Developers'
   - 'Operating System :: OS Independent'
   - 'Topic :: Utilities'
