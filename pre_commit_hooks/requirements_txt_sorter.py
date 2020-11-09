@@ -50,7 +50,7 @@ def sort_requirements(filename: PathLike, allow_git: bool = False) -> int:
 
 	buf: List[str] = [*comments, *git_lines, *[str(req) for req in sorted_requirements]]
 
-	if (requirements != sorted_requirements and buf != filename.read_lines()) or ret:
+	if (requirements != sorted_requirements and buf != filename.read_text().splitlines()) or ret:
 		print('\n'.join(buf))
 		ret |= FAIL
 		filename.write_lines(buf)

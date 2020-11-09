@@ -14,7 +14,7 @@ from pre_commit_hooks.util import FAIL, PASS
 				('# intentionally empty\n', PASS, '# intentionally empty\n'),
 				('foo\n# comment at end\n', FAIL, '# comment at end\nfoo\n'),
 				('foo\nbar\n', FAIL, 'bar\nfoo\n'),
-				('bar\nfoo\n', FAIL, 'bar\nfoo\n'),
+				('bar\nfoo\n', PASS, 'bar\nfoo\n'),
 				('a\nc\nb\n', FAIL, 'a\nb\nc\n'),
 				('a\nb\nc', PASS, 'a\nb\nc'),
 				(
