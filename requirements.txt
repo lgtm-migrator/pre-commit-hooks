@@ -1,3 +1,4 @@
 apeye>=0.3.0
 domdf_python_tools>=0.5.0
 packaging>=20.4
+shippinglabel>=0.2.0
