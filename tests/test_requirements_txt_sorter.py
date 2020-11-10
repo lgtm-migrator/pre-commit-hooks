@@ -59,6 +59,7 @@ from pre_commit_hooks.util import FAIL, PASS
 				('bar\npkg-resources==0.0.0\nfoo\n', FAIL, 'bar\nfoo\n'),
 				('foo\npkg-resources==0.0.0\nbar\n', FAIL, 'bar\nfoo\n'),
 				('foo???1.2.3\nbar\n', FAIL, 'bar\n'),
+				('ruamel.yaml\nbar\n', FAIL, 'bar\nruamel.yaml\n'),
 				),
 		)
 def test_integration(input_s, expected_retval, output, tmp_pathplus):

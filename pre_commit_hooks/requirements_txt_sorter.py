@@ -6,6 +6,7 @@ from typing import List, Optional, Sequence, Set
 # 3rd party
 from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.typing import PathLike
+from shippinglabel import normalize_keep_dot
 from shippinglabel.requirements import ComparableRequirement, read_requirements
 
 # this package
@@ -28,7 +29,11 @@ def sort_requirements(filename: PathLike, allow_git: bool = False) -> int:
 	requirements: Set[ComparableRequirement]
 	git_lines: List[str] = []
 
-	requirements, comments, invalid_lines = read_requirements(req_file=filename, include_invalid=True)
+	requirements, comments, invalid_lines = read_requirements(
+		req_file=filename,
+		include_invalid=True,
+		normalize_func=normalize_keep_dot,
+		)
 
 	for line in invalid_lines:
 		if line.startswith("git+") and allow_git:
