@@ -5,6 +5,7 @@ from typing import List, Optional, Sequence, Set
 
 # 3rd party
 from domdf_python_tools.paths import PathPlus
+from domdf_python_tools.stringlist import StringList
 from domdf_python_tools.typing import PathLike
 from shippinglabel import normalize_keep_dot
 from shippinglabel.requirements import ComparableRequirement, read_requirements
@@ -41,22 +42,28 @@ def sort_requirements(filename: PathLike, allow_git: bool = False) -> int:
 		else:
 			ret |= FAIL
 
-	if not requirements and not invalid_lines:
-		# If the file is only whitespace/newlines/comments exit early
-		return PASS
-
-	sorted_requirements = sorted(requirements, key=lambda r: r.name.casefold())
-
 	# find and remove pkg-resources==0.0.0
 	# which is automatically added by broken pip package under Debian
-	if ComparableRequirement("pkg-resources==0.0.0") in sorted_requirements:
-		sorted_requirements.remove(ComparableRequirement("pkg-resources==0.0.0"))
+	if ComparableRequirement("pkg-resources==0.0.0") in requirements:
+		requirements.remove(ComparableRequirement("pkg-resources==0.0.0"))
 		ret |= FAIL
 
-	buf: List[str] = [*comments, *git_lines, *[str(req) for req in sorted_requirements]]
+	sorted_requirements = sorted(requirements)
 
-	if (requirements != sorted_requirements and buf != filename.read_text().splitlines()) or ret:
+	buf = StringList([*comments, *git_lines, *[str(req) for req in sorted_requirements]])
+	buf.blankline(ensure_single=True)
+
+	if (requirements != sorted_requirements and buf != filename.read_lines()) or ret:
 		print('\n'.join(buf))
+		# print(coloured_diff(
+		# 		filename.read_lines(),
+		# 		buf,
+		# 		str(filename),
+		# 		str(filename),
+		# 		"(original)",
+		# 		"(sorted)",
+		# 		lineterm='',
+		# 		))
 		ret |= FAIL
 		filename.write_lines(buf)
 

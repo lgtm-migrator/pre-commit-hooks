@@ -10,13 +10,13 @@ from pre_commit_hooks.util import FAIL, PASS
 		("input_s", "expected_retval", "output"),
 		(
 				('', PASS, ''),
-				('\n', PASS, '\n'),
+				('\n', FAIL, ''),
 				('# intentionally empty\n', PASS, '# intentionally empty\n'),
 				('foo\n# comment at end\n', FAIL, '# comment at end\nfoo\n'),
 				('foo\nbar\n', FAIL, 'bar\nfoo\n'),
 				('bar\nfoo\n', PASS, 'bar\nfoo\n'),
 				('a\nc\nb\n', FAIL, 'a\nb\nc\n'),
-				('a\nb\nc', PASS, 'a\nb\nc'),
+				('a\nb\nc', FAIL, 'a\nb\nc\n'),
 				(
 						'#comment1\nfoo\n#comment2\nbar\n',
 						FAIL,
@@ -60,6 +60,11 @@ from pre_commit_hooks.util import FAIL, PASS
 				('foo\npkg-resources==0.0.0\nbar\n', FAIL, 'bar\nfoo\n'),
 				('foo???1.2.3\nbar\n', FAIL, 'bar\n'),
 				('ruamel.yaml\nbar\n', FAIL, 'bar\nruamel.yaml\n'),
+				(
+						'numpy>=1.19.1; platform_system != "Windows"\nnumpy==1.19.3; platform_system == "Windows"\n',
+						PASS,
+						'numpy>=1.19.1; platform_system != "Windows"\nnumpy==1.19.3; platform_system == "Windows"\n'
+						),
 				),
 		)
 def test_integration(input_s, expected_retval, output, tmp_pathplus):
