@@ -41,7 +41,7 @@ TESTS = (
 		)
 
 all_tests = pytest.mark.parametrize(
-		('contents', 'expected', 'expected_out'),
+		("contents", "expected", "expected_out"),
 		TESTS,
 		)
 
@@ -49,19 +49,19 @@ all_tests = pytest.mark.parametrize(
 @all_tests
 def test_unit(capsys, contents, expected, expected_out):
 	assert check_docstring_first(contents) == expected
-	assert capsys.readouterr()[0] == expected_out.format(filename='<unknown>')
+	assert capsys.readouterr()[0] == expected_out.format(filename="<unknown>")
 
 
 @all_tests
 def test_integration(tmpdir, capsys, contents, expected, expected_out):
-	f = tmpdir.join('test.py')
+	f = tmpdir.join("test.py")
 	f.write_binary(contents)
 	assert main([str(f)]) == expected
 	assert capsys.readouterr()[0] == expected_out.format(filename=str(f))
 
 
 def test_arbitrary_encoding(tmpdir):
-	f = tmpdir.join('f.py')
-	contents = '# -*- coding: cp1252\nx = "£"'.encode('cp1252')
+	f = tmpdir.join("f.py")
+	contents = '# -*- coding: cp1252\nx = "£"'.encode("cp1252")
 	f.write_binary(contents)
 	assert main([str(f)]) == 0

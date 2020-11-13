@@ -7,7 +7,7 @@ from pre_commit_hooks.util import FAIL, PASS
 
 
 @pytest.mark.parametrize(
-		('input_s', 'expected_retval', 'output'),
+		("input_s", "expected_retval", "output"),
 		(
 				('', PASS, ''),
 				('\n', PASS, '\n'),
@@ -63,7 +63,7 @@ from pre_commit_hooks.util import FAIL, PASS
 				),
 		)
 def test_integration(input_s, expected_retval, output, tmp_pathplus):
-	path = tmp_pathplus / 'requirements.txt'
+	path = tmp_pathplus / "requirements.txt"
 	path.write_text(input_s)
 
 	output_retval = main([str(path)])

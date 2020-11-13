@@ -27,7 +27,7 @@ NON_CODE_TOKENS = frozenset((
 		))
 
 
-def check_docstring_first(src: bytes, filename: str = '<unknown>') -> int:
+def check_docstring_first(src: bytes, filename: str = "<unknown>") -> int:
 	"""
 	Returns nonzero if the source has what looks like a docstring that is
 	not at the beginning of the source.
@@ -62,13 +62,13 @@ def check_docstring_first(src: bytes, filename: str = '<unknown>') -> int:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
 	parser = argparse.ArgumentParser()
-	parser.add_argument('filenames', nargs='*')
+	parser.add_argument("filenames", nargs='*')
 	args = parser.parse_args(argv)
 
 	retv = PASS
 
 	for filename in args.filenames:
-		with open(filename, 'rb') as f:
+		with open(filename, "rb") as f:
 			contents = f.read()
 		retv |= check_docstring_first(contents, filename=filename)
 
