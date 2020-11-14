@@ -30,5 +30,5 @@ Some useful hooks for pre-commit.
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
 __license__: str = "MIT License"
-__version__: str = "0.1.5"
+__version__: str = "0.1.6"
 __email__: str = "dominic@davis-foster.co.uk"
