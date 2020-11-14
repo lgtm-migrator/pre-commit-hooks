@@ -65,6 +65,13 @@ from pre_commit_hooks.util import FAIL, PASS
 						PASS,
 						'numpy>=1.19.1; platform_system != "Windows"\nnumpy==1.19.3; platform_system == "Windows"\n'
 						),
+				(
+						'wxpython>=4.0.7; platform_system == "Windows" and python_version < "3.9"\n'
+						'wxpython>=4.0.7; platform_system == "Darwin" and python_version < "3.9"\n',
+						PASS,
+						'wxpython>=4.0.7; platform_system == "Windows" and python_version < "3.9"\n'
+						'wxpython>=4.0.7; platform_system == "Darwin" and python_version < "3.9"\n',
+						),
 				),
 		)
 def test_integration(input_s, expected_retval, output, tmp_pathplus):
