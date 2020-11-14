@@ -1,2 +1,2 @@
 domdf-python-tools>=1.5.0
-shippinglabel>=0.3.3
+shippinglabel>=0.4.0

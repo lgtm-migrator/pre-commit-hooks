@@ -59,6 +59,13 @@ from pre_commit_hooks.util import FAIL, PASS
 				('bar\npkg-resources==0.0.0\nfoo\n', FAIL, 'bar>=0.2.1\nfoo>=.1\npkg-resources==0.0.0\n'),
 				('foo\npkg-resources==0.0.0\nbar\n', FAIL, 'bar>=0.2.1\nfoo>=.1\npkg-resources==0.0.0\n'),
 				('foo???1.2.3\nbar\n', FAIL, 'foo???1.2.3\nbar>=0.2.1\n'),
+				(
+						'wxpython>=4.0.7; platform_system == "Windows" and python_version < "3.9"\n'
+						'wxpython>=4.0.7; platform_system == "Darwin" and python_version < "3.9"\n',
+						PASS,
+						'wxpython>=4.0.7; platform_system == "Windows" and python_version < "3.9"\n'
+						'wxpython>=4.0.7; platform_system == "Darwin" and python_version < "3.9"\n',
+						),
 				),
 		)
 def test_integration(input_s, expected_retval, output, tmpdir):
