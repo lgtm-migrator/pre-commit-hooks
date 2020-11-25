@@ -4,7 +4,9 @@ import sys
 from typing import Optional, Sequence
 
 # 3rd party
+import requests
 from shippinglabel.pypi import bind_requirements
+from urllib3.exceptions import MaxRetryError, NewConnectionError
 
 # this package
 from pre_commit_hooks.util import PASS
@@ -28,10 +30,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 	retv = PASS
 
 	for filename in args.filenames:
-		ret_for_file = bind_requirements(filename, args.specifier)
+		try:
+			ret_for_file = bind_requirements(filename, args.specifier)
 
-		if ret_for_file:
-			print(f"Binding requirements for {filename}")
+			if ret_for_file:
+				print(f"Binding requirements for {filename}")
+
+		except (NewConnectionError, MaxRetryError, requests.exceptions.ConnectionError) as e:
+			print(f"Error binding requirements for {filename}: {str(e)}")
+			ret_for_file = 1
 
 		retv |= ret_for_file
 
