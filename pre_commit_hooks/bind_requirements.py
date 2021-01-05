@@ -28,12 +28,14 @@ Bind requirements in ``requirements.txt`` files to the latest version on PyPI.
 #
 
 # stdlib
-import argparse
 import sys
-from typing import Optional, Sequence
+from typing import Iterable
 
 # 3rd party
+import click
 import requests
+from consolekit import click_command
+from consolekit.options import auto_default_option
 from shippinglabel.pypi import bind_requirements
 from urllib3.exceptions import MaxRetryError, NewConnectionError  # type: ignore
 
@@ -43,24 +45,23 @@ from pre_commit_hooks.util import PASS
 __all__ = ["main"]
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:  # noqa: D103
-	parser = argparse.ArgumentParser(
-			description="Bind unbound requirements to the latest version on PyPI, and any later versions.",
-			)
-	parser.add_argument("filenames", nargs='*', help="Filenames to bind requirements for.")
-	parser.add_argument(
-			"--specifier",
-			type=str,
-			default=">=",
-			help="The version specifier symbol to use. (default: %(default)s)",
-			)
+@auto_default_option(
+		"--specifier",
+		type=click.STRING,
+		help="The version specifier symbol to use. (default: %(default)s)",
+		)
+@click.argument("filenames", nargs=-1, type=click.STRING)
+@click_command()
+def main(filenames: Iterable[str], specifier: str = ">="):
+	"""
+	Bind unbound requirements to the latest version on PyPI, and any later versions.
+	"""
 
-	args = parser.parse_args(argv)
 	retv = PASS
 
-	for filename in args.filenames:
+	for filename in filenames:
 		try:
-			ret_for_file = bind_requirements(filename, args.specifier)
+			ret_for_file = bind_requirements(filename, specifier)
 
 			if ret_for_file:
 				print(f"Binding requirements for {filename}")
@@ -74,7 +75,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:  # noqa: D103
 	if not retv:
 		print("Up to date.")
 
-	return retv
+	sys.exit(retv)
 
 
 if __name__ == "__main__":

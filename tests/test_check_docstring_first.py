@@ -1,5 +1,6 @@
 # 3rd party
 import pytest
+from click.testing import CliRunner, Result
 
 # this package
 from pre_commit_hooks.check_docstring_first import check_docstring_first, main
@@ -50,15 +51,21 @@ def test_unit(capsys, contents, expected, expected_out):
 
 
 @all_tests
-def test_integration(tmpdir, capsys, contents, expected, expected_out):
-	f = tmpdir.join("test.py")
-	f.write_binary(contents)
-	assert main([str(f)]) == expected
-	assert capsys.readouterr()[0] == expected_out.format(filename=str(f))
+def test_integration(tmpdir, contents, expected, expected_out):
+	path = tmpdir.join("test.py")
+	path.write_binary(contents)
+
+	runner = CliRunner()
+	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
+	assert result.exit_code == expected
+	assert result.stdout == expected_out.format(filename=str(path))
 
 
 def test_arbitrary_encoding(tmpdir):
-	f = tmpdir.join("f.py")
+	path = tmpdir.join("f.py")
 	contents = '# -*- coding: cp1252\nx = "£"'.encode("cp1252")
-	f.write_binary(contents)
-	assert main([str(f)]) == 0
+	path.write_binary(contents)
+
+	runner = CliRunner()
+	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
+	assert result.exit_code == 0

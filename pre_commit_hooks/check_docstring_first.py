@@ -33,11 +33,15 @@ Checks the docstring does not occur after any code.
 #
 
 # stdlib
-import argparse
 import io
+import sys
 import tokenize
 from tokenize import tokenize as tokenize_tokenize
-from typing import Optional, Sequence
+from typing import Iterable
+
+# 3rd party
+import click
+from consolekit import click_command
 
 # this package
 from pre_commit_hooks.util import FAIL, PASS
@@ -86,16 +90,18 @@ def check_docstring_first(src: bytes, filename: str = "<unknown>") -> int:
 	return PASS
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:  # noqa: D103
-	parser = argparse.ArgumentParser()
-	parser.add_argument("filenames", nargs='*')
-	args = parser.parse_args(argv)
+@click.argument("filenames", nargs=-1, type=click.STRING)
+@click_command()
+def main(filenames: Iterable[str]):
+	"""
+	Checks the docstring does not occur after any code.
+	"""
 
 	retv = PASS
 
-	for filename in args.filenames:
+	for filename in filenames:
 		with open(filename, "rb") as f:
 			contents = f.read()
 		retv |= check_docstring_first(contents, filename=filename)
 
-	return retv
+	sys.exit(retv)

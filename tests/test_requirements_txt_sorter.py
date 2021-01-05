@@ -1,5 +1,6 @@
 # 3rd party
 import pytest
+from click.testing import CliRunner, Result
 
 # this package
 from pre_commit_hooks.requirements_txt_sorter import main
@@ -78,7 +79,8 @@ def test_integration(input_s, expected_retval, output, tmp_pathplus):
 	path = tmp_pathplus / "requirements.txt"
 	path.write_text(input_s)
 
-	output_retval = main([str(path)])
+	runner = CliRunner()
 
-	assert path.read_text() == output
-	assert output_retval == expected_retval
+	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
+	assert path.read_text(encoding="UTF-8") == output
+	assert result.exit_code == expected_retval

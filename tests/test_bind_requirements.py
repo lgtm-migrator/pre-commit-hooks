@@ -1,5 +1,6 @@
 # 3rd party
 import pytest
+from click.testing import CliRunner, Result
 
 # this package
 from pre_commit_hooks.bind_requirements import main
@@ -96,7 +97,8 @@ def test_integration(input_s, expected_retval, output, tmpdir, cassette):
 	path = tmpdir.join("file.txt")
 	path.write_text(input_s, encoding="UTF-8")
 
-	output_retval = main([str(path)])
+	runner = CliRunner()
 
+	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
 	assert path.read_text(encoding="UTF-8") == output
-	assert output_retval == expected_retval
+	assert result.exit_code == expected_retval

@@ -29,11 +29,13 @@ Sort requirements in ``requirements.txt`` files alphabetically.
 #
 
 # stdlib
-import argparse
 import sys
-from typing import List, Optional, Sequence, Set
+from typing import Iterable, List, Set
 
 # 3rd party
+import click
+from consolekit import click_command
+from consolekit.options import flag_option
 from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.stringlist import StringList
 from domdf_python_tools.typing import PathLike
@@ -100,28 +102,29 @@ def sort_requirements(filename: PathLike, allow_git: bool = False) -> int:
 	return ret
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:  # noqa: D103
-	parser = argparse.ArgumentParser(description="Sort requirements in the given files.", )
-	parser.add_argument("filenames", nargs='*', help="Filenames to sort.")
-	parser.add_argument(
-			"--allow-git",
-			action="store_true",
-			default=False,
-			help="allow 'git+' options, which are allowed by pip but not PEP 508.",
-			)
+@flag_option(
+		"--allow-git",
+		default=False,
+		help="allow 'git+' options, which are allowed by pip but not PEP 508.",
+		)
+@click.argument("filenames", nargs=-1, type=click.STRING)
+@click_command()
+def main(filenames: Iterable[str], allow_git: bool = False):
+	"""
+	Sort requirements in the given files.
+	"""
 
-	args = parser.parse_args(argv)
 	retv = PASS
 
-	for arg in args.filenames:
-		ret_for_file = sort_requirements(arg, allow_git=args.allow_git)
+	for arg in filenames:
+		ret_for_file = sort_requirements(arg, allow_git=allow_git)
 
 		if ret_for_file:
 			print(f"Sorting {arg}")
 
 		retv |= ret_for_file
 
-	return retv
+	sys.exit(retv)
 
 
 if __name__ == "__main__":
