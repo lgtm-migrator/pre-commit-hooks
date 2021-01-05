@@ -6,7 +6,7 @@ from typing import Optional, Sequence
 # 3rd party
 import requests
 from shippinglabel.pypi import bind_requirements
-from urllib3.exceptions import MaxRetryError, NewConnectionError
+from urllib3.exceptions import MaxRetryError, NewConnectionError  # type: ignore
 
 # this package
 from pre_commit_hooks.util import PASS
