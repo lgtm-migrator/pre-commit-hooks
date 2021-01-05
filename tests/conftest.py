@@ -3,10 +3,11 @@ import pytest
 from _pytest.fixtures import FixtureRequest
 from shippinglabel.pypi import PYPI_API
 
-pytest_plugins = ("domdf_python_tools.testing", )
 # 3rd party
 from betamax import Betamax  # type: ignore
 from domdf_python_tools.paths import PathPlus
+
+pytest_plugins = ("domdf_python_tools.testing", )
 
 with Betamax.configure() as config:
 	config.cassette_library_dir = PathPlus(__file__).parent / "cassettes"
