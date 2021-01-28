@@ -1,6 +1,7 @@
 # 3rd party
 import pytest
-from click.testing import CliRunner, Result
+from consolekit.testing import CliRunner, Result
+from domdf_python_tools.paths import PathPlus
 
 # this package
 from pre_commit_hooks.check_docstring_first import check_docstring_first, main
@@ -51,21 +52,21 @@ def test_unit(capsys, contents, expected, expected_out):
 
 
 @all_tests
-def test_integration(tmpdir, contents, expected, expected_out):
-	path = tmpdir.join("test.py")
-	path.write_binary(contents)
+def test_integration(tmp_pathplus: PathPlus, contents, expected, expected_out):
+	path = tmp_pathplus / "test.py"
+	path.write_bytes(contents)
 
 	runner = CliRunner()
-	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
+	result: Result = runner.invoke(main, args=[str(path)])
 	assert result.exit_code == expected
 	assert result.stdout == expected_out.format(filename=str(path))
 
 
-def test_arbitrary_encoding(tmpdir):
-	path = tmpdir.join("f.py")
+def test_arbitrary_encoding(tmp_pathplus: PathPlus):
+	path = tmp_pathplus / "f.py"
 	contents = '# -*- coding: cp1252\nx = "£"'.encode("cp1252")
-	path.write_binary(contents)
+	path.write_bytes(contents)
 
 	runner = CliRunner()
-	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
+	result: Result = runner.invoke(main, args=[str(path)])
 	assert result.exit_code == 0

@@ -5,7 +5,7 @@ from betamax import Betamax  # type: ignore
 from domdf_python_tools.paths import PathPlus
 from shippinglabel.pypi import PYPI_API
 
-pytest_plugins = ("domdf_python_tools.testing", )
+pytest_plugins = ("coincidence", )
 
 with Betamax.configure() as config:
 	config.cassette_library_dir = PathPlus(__file__).parent / "cassettes"

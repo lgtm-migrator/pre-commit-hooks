@@ -1,8 +1,10 @@
 # 3rd party
 import pytest
-from click.testing import CliRunner, Result
+from consolekit.testing import CliRunner, Result
 
 # this package
+from domdf_python_tools.paths import PathPlus
+
 from pre_commit_hooks.bind_requirements import main
 from pre_commit_hooks.util import FAIL, PASS
 
@@ -93,12 +95,12 @@ from pre_commit_hooks.util import FAIL, PASS
 						),
 				]
 		)
-def test_integration(input_s, expected_retval, output, tmpdir, cassette):
-	path = tmpdir.join("file.txt")
-	path.write_text(input_s, encoding="UTF-8")
+def test_integration(input_s, expected_retval, output, tmp_pathplus: PathPlus, cassette):
+	path = tmp_pathplus / "file.txt"
+	path.write_text(input_s)
 
 	runner = CliRunner()
 
-	result: Result = runner.invoke(main, catch_exceptions=False, args=[str(path)])
-	assert path.read_text(encoding="UTF-8") == output
+	result: Result = runner.invoke(main, args=[str(path)])
+	assert path.read_text() == output
 	assert result.exit_code == expected_retval
