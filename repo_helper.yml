@@ -30,3 +30,8 @@ classifiers:
   - 'Intended Audience :: Developers'
   - 'Operating System :: OS Independent'
   - 'Topic :: Utilities'
+
+min_coverage: 95
+
+keywords:
+  - pre-commit
