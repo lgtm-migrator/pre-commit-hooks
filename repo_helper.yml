@@ -1,3 +1,5 @@
+# Configuration for 'repo_helper' (https://github.com/domdfcoding/repo_helper)
+---
 modname: pre-commit-hooks
 copyright_years: "2020-2021"
 author: "Dominic Davis-Foster"
@@ -7,31 +9,32 @@ username: "domdfcoding"
 license: 'MIT'
 short_desc: 'Some useful hooks for pre-commit.'
 
-enable_conda: False
-on_pypi: False
-enable_docs: False
+enable_conda: false
+on_pypi: false
+enable_docs: false
 
 console_scripts:
-  - "requirements-txt-sorter = pre_commit_hooks.requirements_txt_sorter:main"
-  - "bind-requirements = pre_commit_hooks.bind_requirements:main"
-  - "check-docstring-first = pre_commit_hooks.check_docstring_first:main"
+ - "requirements-txt-sorter = pre_commit_hooks.requirements_txt_sorter:main"
+ - "bind-requirements = pre_commit_hooks.bind_requirements:main"
+ - "check-docstring-first = pre_commit_hooks.check_docstring_first:main"
 
 # Versions to run tests for
 python_versions:
-  - '3.6'
-  - '3.7'
-  - '3.8'
-  - '3.9'
-  - 'pypy3'
-  - '3.10-dev'
+ - '3.6'
+ - '3.7'
+ - '3.8'
+ - '3.9'
+ - 3.10-dev
+ - pypy3
+ - rustpython
 
 classifiers:
-  - 'Development Status :: 4 - Beta'
-  - 'Intended Audience :: Developers'
-  - 'Operating System :: OS Independent'
-  - 'Topic :: Utilities'
+ - 'Development Status :: 4 - Beta'
+ - 'Intended Audience :: Developers'
+ - 'Operating System :: OS Independent'
+ - 'Topic :: Utilities'
 
 min_coverage: 95
 
 keywords:
-  - pre-commit
+ - pre-commit
