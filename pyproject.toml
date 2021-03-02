@@ -1,6 +1,6 @@
 [build-system]
-requires = [ "setuptools>=40.6.0", "wheel>=0.34.2",]
-build-backend = "setuptools.build_meta"
+requires = [ "whey",]
+build-backend = "whey"
 
 [project]
 name = "pre-commit-hooks"
@@ -25,3 +25,15 @@ Homepage = "https://github.com/domdfcoding/pre-commit-hooks"
 requirements-txt-sorter = "pre_commit_hooks.requirements_txt_sorter:main"
 bind-requirements = "pre_commit_hooks.bind_requirements:main"
 check-docstring-first = "pre_commit_hooks.check_docstring_first:main"
+
+[tool.whey]
+base-classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+]
+python-versions = [ "3.6", "3.7", "3.8", "3.9",]
+python-implementations = [ "CPython", "PyPy",]
+platforms = [ "Windows", "macOS", "Linux",]
+license-key = "MIT"
+package = "pre_commit_hooks"

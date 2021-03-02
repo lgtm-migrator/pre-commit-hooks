@@ -31,10 +31,10 @@ python_versions:
 classifiers:
  - 'Development Status :: 4 - Beta'
  - 'Intended Audience :: Developers'
- - 'Operating System :: OS Independent'
  - 'Topic :: Utilities'
 
 min_coverage: 95
+use_whey: true
 
 keywords:
  - pre-commit
