@@ -92,6 +92,12 @@ from pre_commit_hooks.util import FAIL, PASS
 						'wxpython>=4.0.7; platform_system == "Darwin" and python_version < "3.9"\n',
 						id="markers",
 						),
+				pytest.param(
+						'pyreadline @ https://github.com/domdfcoding/3.10-Wheels/raw/936f0570b561f3cda0be94d93066a11c6fe782f1/pyreadline-2.0-py3-none-any.whl ; python_version == "3.10" and platform_system == "Windows"',
+						FAIL,
+						'pyreadline@ https://github.com/domdfcoding/3.10-Wheels/raw/936f0570b561f3cda0be94d93066a11c6fe782f1/pyreadline-2.0-py3-none-any.whl ; python_version == "3.10" and platform_system == "Windows"\n',
+						id="url"
+						),
 				]
 		)
 def test_integration(input_s, expected_retval, output, tmp_pathplus: PathPlus, cassette):
