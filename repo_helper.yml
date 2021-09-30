@@ -37,3 +37,6 @@ classifiers:
 
 keywords:
  - pre-commit
+
+mypy_deps:
+ - types-requests
