@@ -100,7 +100,8 @@ from pre_commit_hooks.util import FAIL, PASS
 						),
 				]
 		)
-def test_integration(input_s, expected_retval, output, tmp_pathplus: PathPlus, cassette):
+@pytest.mark.usefixtures("cassette")
+def test_integration(input_s, expected_retval, output, tmp_pathplus: PathPlus):
 	path = tmp_pathplus / "file.txt"
 	path.write_text(input_s)
 
