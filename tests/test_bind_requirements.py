@@ -1,5 +1,6 @@
 # 3rd party
 import pytest
+from coincidence.regressions import AdvancedFileRegressionFixture
 from consolekit.testing import CliRunner, Result
 from domdf_python_tools.paths import PathPlus
 
@@ -101,7 +102,13 @@ from pre_commit_hooks.util import FAIL, PASS
 				]
 		)
 @pytest.mark.usefixtures("cassette")
-def test_integration(input_s, expected_retval, output, tmp_pathplus: PathPlus):
+def test_integration(
+		input_s,
+		expected_retval,
+		output,
+		tmp_pathplus: PathPlus,
+		advanced_file_regression: AdvancedFileRegressionFixture,
+		):
 	path = tmp_pathplus / "file.txt"
 	path.write_text(input_s)
 
@@ -110,3 +117,4 @@ def test_integration(input_s, expected_retval, output, tmp_pathplus: PathPlus):
 	result: Result = runner.invoke(main, args=[str(path)])
 	assert path.read_text() == output
 	assert result.exit_code == expected_retval
+	advanced_file_regression.check(result.stdout.rstrip().replace(path.as_posix(), ".../file.txt"))
