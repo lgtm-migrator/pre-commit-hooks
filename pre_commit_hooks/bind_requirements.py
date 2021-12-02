@@ -36,6 +36,7 @@ import click
 import requests
 from consolekit import click_command
 from consolekit.options import auto_default_option
+from packaging.requirements import InvalidRequirement
 from shippinglabel import normalize_keep_dot
 from shippinglabel.pypi import bind_requirements
 from urllib3.exceptions import MaxRetryError, NewConnectionError  # type: ignore
@@ -69,6 +70,9 @@ def main(filenames: Iterable[str], specifier: str = ">="):
 
 		except (NewConnectionError, MaxRetryError, requests.exceptions.ConnectionError) as e:
 			print(f"Error binding requirements for {filename}: {str(e)}")
+			ret_for_file = 1
+		except InvalidRequirement as e:
+			print(f"Invalid Requirement: {str(e)}")
 			ret_for_file = 1
 
 		retv |= ret_for_file

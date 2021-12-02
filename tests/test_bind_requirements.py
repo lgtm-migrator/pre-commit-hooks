@@ -99,6 +99,7 @@ from pre_commit_hooks.util import FAIL, PASS
 						'pyreadline@ https://github.com/domdfcoding/3.10-Wheels/raw/936f0570b561f3cda0be94d93066a11c6fe782f1/pyreadline-2.0-py3-none-any.whl ; python_version == "3.10" and platform_system == "Windows"\n',
 						id="url"
 						),
+				pytest.param("shutil", FAIL, "shutil", id="not_on_pypi"),
 				]
 		)
 @pytest.mark.usefixtures("cassette")
