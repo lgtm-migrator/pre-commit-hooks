@@ -36,6 +36,7 @@ import click
 import requests
 from consolekit import click_command
 from consolekit.options import auto_default_option
+from shippinglabel import normalize_keep_dot
 from shippinglabel.pypi import bind_requirements
 from urllib3.exceptions import MaxRetryError, NewConnectionError  # type: ignore
 
@@ -61,7 +62,7 @@ def main(filenames: Iterable[str], specifier: str = ">="):
 
 	for filename in filenames:
 		try:
-			ret_for_file = bind_requirements(filename, specifier)
+			ret_for_file = bind_requirements(filename, specifier, normalize_func=normalize_keep_dot)
 
 			if ret_for_file:
 				print(f"Binding requirements for {filename}")
