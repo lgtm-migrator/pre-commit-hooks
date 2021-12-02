@@ -36,6 +36,7 @@ import click
 import requests
 from consolekit import click_command
 from consolekit.options import auto_default_option
+from domdf_python_tools.paths import PathPlus
 from packaging.requirements import InvalidRequirement
 from shippinglabel import normalize_keep_dot
 from shippinglabel.pypi import bind_requirements
@@ -62,14 +63,15 @@ def main(filenames: Iterable[str], specifier: str = ">="):
 	retv = PASS
 
 	for filename in filenames:
+		filename = PathPlus(filename)
 		try:
 			ret_for_file = bind_requirements(filename, specifier, normalize_func=normalize_keep_dot)
 
 			if ret_for_file:
-				print(f"Binding requirements for {filename}")
+				print(f"Binding requirements for {filename.as_posix()}")
 
 		except (NewConnectionError, MaxRetryError, requests.exceptions.ConnectionError) as e:
-			print(f"Error binding requirements for {filename}: {str(e)}")
+			print(f"Error binding requirements for {filename.as_posix()}: {str(e)}")
 			ret_for_file = 1
 		except InvalidRequirement as e:
 			print(f"Invalid Requirement: {str(e)}")

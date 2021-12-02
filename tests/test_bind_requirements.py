@@ -119,5 +119,6 @@ def test_integration(
 	assert path.read_text() == output
 	assert result.exit_code == expected_retval
 	advanced_file_regression.check(
-			result.stdout.rstrip().replace(path.as_posix(), ".../file.txt"), extension=".md"
+			result.stdout.rstrip().replace(path.as_posix(), ".../file.txt"),
+			extension=".md",
 			)
