@@ -37,6 +37,7 @@ import requests
 from consolekit import click_command
 from consolekit.options import auto_default_option
 from domdf_python_tools.paths import PathPlus
+from domdf_python_tools.typing import PathLike
 from packaging.requirements import InvalidRequirement
 from shippinglabel import normalize_keep_dot
 from shippinglabel.pypi import bind_requirements
@@ -55,7 +56,7 @@ __all__ = ["main"]
 		)
 @click.argument("filenames", nargs=-1, type=click.STRING)
 @click_command()
-def main(filenames: Iterable[str], specifier: str = ">="):
+def main(filenames: Iterable[PathLike], specifier: str = ">="):
 	"""
 	Bind unbound requirements to the latest version on PyPI, and any later versions.
 	"""
