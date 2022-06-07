@@ -40,8 +40,8 @@ from domdf_python_tools.paths import PathPlus
 from domdf_python_tools.typing import PathLike
 from packaging.requirements import InvalidRequirement
 from shippinglabel import normalize_keep_dot
-from shippinglabel.pypi import bind_requirements
-from urllib3.exceptions import MaxRetryError, NewConnectionError  # type: ignore
+from shippinglabel_pypi import bind_requirements
+from urllib3.exceptions import MaxRetryError, NewConnectionError
 
 # this package
 from pre_commit_hooks.util import PASS
