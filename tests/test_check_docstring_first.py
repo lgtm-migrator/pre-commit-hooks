@@ -46,13 +46,13 @@ all_tests = pytest.mark.parametrize("contents, expected, expected_out", TESTS)
 
 
 @all_tests
-def test_unit(capsys, contents, expected, expected_out):
+def test_unit(capsys, contents: bytes, expected: int, expected_out: str):
 	assert check_docstring_first(contents) == expected
 	assert capsys.readouterr()[0] == expected_out.format(filename="<unknown>")
 
 
 @all_tests
-def test_integration(tmp_pathplus: PathPlus, contents, expected, expected_out):
+def test_integration(tmp_pathplus: PathPlus, contents: bytes, expected: int, expected_out: str):
 	path = tmp_pathplus / "test.py"
 	path.write_bytes(contents)
 

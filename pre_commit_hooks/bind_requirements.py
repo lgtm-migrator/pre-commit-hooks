@@ -46,7 +46,7 @@ from urllib3.exceptions import MaxRetryError, NewConnectionError  # type: ignore
 # this package
 from pre_commit_hooks.util import PASS
 
-__all__ = ["main"]
+__all__ = ("main", )
 
 
 @auto_default_option(
@@ -56,7 +56,7 @@ __all__ = ["main"]
 		)
 @click.argument("filenames", nargs=-1, type=click.STRING)
 @click_command()
-def main(filenames: Iterable[PathLike], specifier: str = ">="):
+def main(filenames: Iterable[PathLike], specifier: str = ">=") -> None:
 	"""
 	Bind unbound requirements to the latest version on PyPI, and any later versions.
 	"""

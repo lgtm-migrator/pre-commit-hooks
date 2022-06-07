@@ -104,9 +104,9 @@ from pre_commit_hooks.util import FAIL, PASS
 		)
 @pytest.mark.usefixtures("cassette")
 def test_integration(
-		input_s,
-		expected_retval,
-		output,
+		input_s: str,
+		expected_retval: int,
+		output: str,
 		tmp_pathplus: PathPlus,
 		advanced_file_regression: AdvancedFileRegressionFixture,
 		):

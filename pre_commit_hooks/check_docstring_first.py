@@ -46,7 +46,7 @@ from consolekit import click_command
 # this package
 from pre_commit_hooks.util import FAIL, PASS
 
-__all__ = ["check_docstring_first", "main"]
+__all__ = ("check_docstring_first", "main")
 
 NON_CODE_TOKENS = frozenset((
 		tokenize.COMMENT,
@@ -92,7 +92,7 @@ def check_docstring_first(src: bytes, filename: str = "<unknown>") -> int:
 
 @click.argument("filenames", nargs=-1, type=click.STRING)
 @click_command()
-def main(filenames: Iterable[str]):
+def main(filenames: Iterable[str]) -> None:
 	"""
 	Checks the docstring does not occur after any code.
 	"""

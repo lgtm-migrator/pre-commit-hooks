@@ -1,9 +1,13 @@
+# stdlib
+from typing import Iterator
+
 # 3rd party
 import pytest
+import requests
 from _pytest.fixtures import FixtureRequest
-from betamax import Betamax  # type: ignore
+from betamax import Betamax  # type: ignore[import]
 from domdf_python_tools.paths import PathPlus
-from shippinglabel.pypi import PYPI_API
+from shippinglabel_pypi import _session
 
 pytest_plugins = ("coincidence", )
 
@@ -12,13 +16,13 @@ with Betamax.configure() as config:
 
 
 @pytest.fixture()
-def cassette(request: FixtureRequest):
+def cassette(request: FixtureRequest) -> Iterator[requests.Session]:
 	"""
 	Provides a Betamax cassette scoped to the test function
 	which record and plays back interactions with the PyPI API.
 	"""  # noqa: D400
 
-	with Betamax(PYPI_API._store["session"]) as vcr:
+	with Betamax(_session) as vcr:
 		vcr.use_cassette(request.node.name, record="none")
 
-		yield PYPI_API
+		yield _session

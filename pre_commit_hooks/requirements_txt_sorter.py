@@ -45,7 +45,7 @@ from shippinglabel.requirements import ComparableRequirement, read_requirements
 # this package
 from pre_commit_hooks.util import FAIL, PASS
 
-__all__ = ["sort_requirements", "main"]
+__all__ = ("sort_requirements", "main")
 
 
 def sort_requirements(filename: PathLike, allow_git: bool = False) -> int:
@@ -109,7 +109,7 @@ def sort_requirements(filename: PathLike, allow_git: bool = False) -> int:
 		)
 @click.argument("filenames", nargs=-1, type=click.STRING)
 @click_command()
-def main(filenames: Iterable[str], allow_git: bool = False):
+def main(filenames: Iterable[str], allow_git: bool = False) -> None:
 	"""
 	Sort requirements in the given files.
 	"""

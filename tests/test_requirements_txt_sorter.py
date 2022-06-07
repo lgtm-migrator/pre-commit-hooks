@@ -1,6 +1,7 @@
 # 3rd party
 import pytest
 from consolekit.testing import CliRunner, Result
+from domdf_python_tools.paths import PathPlus
 
 # this package
 from pre_commit_hooks.requirements_txt_sorter import main
@@ -80,7 +81,7 @@ from pre_commit_hooks.util import FAIL, PASS
 						),
 				],
 		)
-def test_integration(input_s, expected_retval, output, tmp_pathplus):
+def test_integration(input_s: str, expected_retval: int, output: str, tmp_pathplus: PathPlus):
 	path = tmp_pathplus / "requirements.txt"
 	path.write_text(input_s)
 
