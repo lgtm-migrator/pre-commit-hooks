@@ -47,8 +47,8 @@ See also: https://github.com/pre-commit/pre-commit
 	:target: https://github.com/domdfcoding/pre-commit-hooks/actions?query=workflow%3A%22mypy%22
 	:alt: mypy status
 
-.. |requires| image:: https://dependency-dash.herokuapp.com/github/domdfcoding/pre-commit-hooks/badge.svg
-	:target: https://dependency-dash.herokuapp.com/github/domdfcoding/pre-commit-hooks/
+.. |requires| image:: https://dependency-dash.repo-helper.uk/github/domdfcoding/pre-commit-hooks/badge.svg
+	:target: https://dependency-dash.repo-helper.uk/github/domdfcoding/pre-commit-hooks/
 	:alt: Requirements Status
 
 .. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/pre-commit-hooks/master?logo=coveralls
